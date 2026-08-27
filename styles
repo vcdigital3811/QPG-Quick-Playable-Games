@@ -1,0 +1,39 @@
+body {
+    font-family: var(--font-body);
+    background: radial-gradient(ellipse 900px 500px at 50% -10%, rgba(78, 232, 255, .08), transparent 60%), var(--bg);
+    min-height: 100vh;
+    color: var(--ink);
+    padding: 0 20px 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #090c14;
+    --bg-elev: #12172a;
+    --bg-elev-2: #171d33;
+    --ink: #eef1f8;
+    --ink-muted: #8891a8;
+    --line: #232a45;
+    --cyan: #4ee8ff;
+    --amber: #ffb020;
+    --magenta: #ff3f8e;
+    --violet: #9b6bff;
+    --accent: var(--cyan);
+    --font-display: 'Chakra Petch', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa2JL7SUc.woff2) format('woff2');
+    unicode-range: U +0460 -052F, U +1C80 -1C8A, U +20B4, U +2DE0 -2DFF, U + A640-A69F, U + FE2E-FE2F;
+}
