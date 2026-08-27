@@ -1,0 +1,298 @@
+/* ==========================================================================
+   1. CORE DESIGN VARIABLE ROOT
+   ========================================================================== */
+:root {
+  --bg-main: #0c0f17;
+  --bg-card: #151a26;
+  --bg-input: #1b2234;
+  --border-color: #222c43;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  
+  /* Category Accent Colors */
+  --color-dodge: #00d2ff;
+  --color-rhythm: #ff2a85;
+  --color-puzzle: #ffb703;
+  --color-party: #a78bfa;
+  
+  --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   2. GLOBAL ACCESSIBILITY & BASE STYLES
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-stack);
+  padding: 2rem 1.5rem;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   3. HERO BANNER & HEADER SECTION
+   ========================================================================== */
+.hero {
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  text-align: left;
+}
+
+.marquee {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.title-block {
+  flex: 1;
+  min-width: 280px;
+}
+
+.eyebrow {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #ffffff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+#game-count {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.coin-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--bg-card);
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.qr-image {
+  width: 64px;
+  height: 64px;
+}
+
+.coin-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   4. INTERACTIVE CONTROLS (SEARCH & BUTTON FILTERS)
+   ========================================================================== */
+.controls {
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .controls {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 320px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+#search {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.7rem;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#search:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pill:hover {
+  background-color: var(--bg-input);
+  color: #ffffff;
+}
+
+.pill.active {
+  background-color: #ffffff;
+  color: var(--bg-main);
+  border-color: #ffffff;
+}
+
+.results-count {
+  max-width: 1200px;
+  margin: -1rem auto 1.5rem auto;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   5. RESPONSIVE FLUID ARCADE GRID
+   ========================================================================== */
+.games {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ==========================================================================
+   6. ARCADE CARD ELEMENT COMPONENT
+   ========================================================================== */
+.card {
+  position: relative;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #334155;
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Card Visual Overlay Details */
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: transparent;
+  pointer-events: none;
+}
+
+.cat-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+/* Smart Accent-Lines Linked to Attributes */
+.card[data-cat="dodge"] .cat-tag { color: var(--color-dodge); }
+.card[data-cat="dodge"]::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--color-dodge);
+}
+
+.card[data-cat="rhythm"] .cat-tag { color: var(--color-rhythm); }
+.card[data-cat="rhythm"]::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--color-rhythm);
+}
+
+.card[data-cat="puzzle"] .cat-tag { color: var(--color-puzzle); }
+.card[data-cat="puzzle"]::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--color-puzzle);
+}
+
+.card[data-cat="party"] .cat-tag { color: var(--color-party); }
+.card[data-cat="party"]::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--color-party);
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.card h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  flex-grow: 1;
+}
